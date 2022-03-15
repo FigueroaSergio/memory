@@ -1,11 +1,15 @@
+import {useContext} from "react"
+
 import {Card} from "../Card/Card"
+import { Context } from "../../context/Context"
+
 function Table(){
-    const x=[1,2,3,4,5,6,7,8]   
+    let {cards}= useContext(Context)
     return (
         <>
             <div className="row row-cols-4 g-3 ">
-                {x.map(ele=>(
-                    <Card src={ele} />
+                {cards.map((card, index)=>(
+                    <Card  key={index} card={card}/>
                 ))}
 
             </div>
