@@ -5,7 +5,7 @@ function Table(){
         <>
             <div className="row row-cols-4 g-3 ">
                 {x.map(ele=>(
-                    <Card val={ele} />
+                    <Card src={ele} />
                 ))}
 
             </div>
