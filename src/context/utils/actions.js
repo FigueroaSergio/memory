@@ -4,7 +4,7 @@
 // to-do:
 // block select cards already open by match
 let clicOnCard=(id, cards, setCards ,currentMove, setCurrentMove)=>{
-
+    
     let newCards= [...cards]
     let moves=[...currentMove]
    console.log(moves);
@@ -16,31 +16,42 @@ let clicOnCard=(id, cards, setCards ,currentMove, setCurrentMove)=>{
 
         // block error of clic two times in the same card
         // and let current moves equal
-        if(i!==moves[0])moves.push(i)
+        if(i!==moves[0] && !newCards[i].match)moves.push(i)
+        console.log(moves);
         setCurrentMove(moves)
         setCards(newCards)
 
     }
     if(moves.length===2){
         //extract the cards 
+        
         let card1=newCards[moves[0]];
         let card2=newCards[moves[1]];
         if(card1.src===card2.src){
-            
+            newCards[moves[1]].match=true
+            newCards[moves[0]].match=true
+          
             setCurrentMove([])
+           
         }
         else{
+            
             setTimeout(()=>{
-               
+                
                 newCards[moves[0]].active=false
                 newCards[moves[1]].active=false
                    
                 setCurrentMove([])
                 setCards(newCards)
+             
                  
-            },2000)
+            },1000)
             
         }
+        
+    }
+    if(newCards.every(ele=>ele.match===true)){
+        setTimeout(()=>alert("you win"),1000)
     }
 
 }
