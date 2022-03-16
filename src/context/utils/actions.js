@@ -2,32 +2,29 @@
 // verify if the card match
 // doesn't allow open more than 2 cards
 // to-do:
-// block select cards already open by match
+//  when clicked fast some cards don't return to be unactive
 let clicOnCard=(id, cards, setCards ,currentMove, setCurrentMove)=>{
     
-    let newCards= [...cards]
-    let moves=[...currentMove]
-   console.log(moves);
+    let newCards= cards
+    let moves=currentMove
+    
     //only allows open card if there'is only 1 card open currently
-    if(moves.length<2){
-        
-        let i = newCards.findIndex(e=> e.id===id);
+    let i = newCards.findIndex(e=> e.id===id);
+    // block error of clic two times in the same card
+    // and let current moves equal
+    if(!moves.includes(i) && !newCards[i].match)
+        moves.push(i)
+        console.log(moves); 
+    if(moves.length<=2){
         newCards[i].active=true
-
-        // block error of clic two times in the same card
-        // and let current moves equal
-        if(i!==moves[0] && !newCards[i].match)moves.push(i)
-        console.log(moves);
         setCurrentMove(moves)
         setCards(newCards)
 
     }
+    
     if(moves.length===2){
         //extract the cards 
-        
-        let card1=newCards[moves[0]];
-        let card2=newCards[moves[1]];
-        if(card1.src===card2.src){
+        if(newCards[moves[1]].src===newCards[moves[0]].src){
             newCards[moves[1]].match=true
             newCards[moves[0]].match=true
           
@@ -38,8 +35,8 @@ let clicOnCard=(id, cards, setCards ,currentMove, setCurrentMove)=>{
             
             setTimeout(()=>{
                 
-                newCards[moves[0]].active=false
                 newCards[moves[1]].active=false
+                newCards[moves[0]].active=false
                    
                 setCurrentMove([])
                 setCards(newCards)

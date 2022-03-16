@@ -1,0 +1,14 @@
+.timer {
+  text-align: center;
+}
+.timer span {
+  margin-top: 10px;
+  font-size: 1.5em;
+  color: var(--bs-secondary); /* from bootrap*/
+}
+
+@media (max-width: 576px) {
+  .timer {
+    text-align: right;
+  }
+}
