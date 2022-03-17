@@ -9,7 +9,7 @@ function Table(){
         <>
             <div className="row row-cols-4 g-3 ">
                 {cards.map((card, index)=>(
-                    <Card  key={index} card={card}/>
+                    <Card  key={index} card={card} index={index}/>
                 ))}
 
             </div>

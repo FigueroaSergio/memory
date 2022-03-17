@@ -3,53 +3,42 @@
 // doesn't allow open more than 2 cards
 // to-do:
 //  when clicked fast some cards don't return to be unactive
-let clicOnCard=(id, cards, setCards ,currentMove, setCurrentMove)=>{
+let handleCardClick=(index, cards,openCards, setOpenCards)=>{
+    let moves = [...openCards]
+    //console.log(openCards);
     
-    let newCards= cards
-    let moves=currentMove
-    
-    //only allows open card if there'is only 1 card open currently
-    let i = newCards.findIndex(e=> e.id===id);
     // block error of clic two times in the same card
-    // and let current moves equal
-    if(!moves.includes(i) && !newCards[i].match)
-        moves.push(i)
-        console.log(moves); 
-    if(moves.length<=2){
-        newCards[i].active=true
-        setCurrentMove(moves)
-        setCards(newCards)
-
-    }
+    // Current moves equal
+    // block select cards already opened
+    if(!moves.includes(index) && !cards[index].match)
+        moves.push(index)
+    //console.log(`bf->moves:${moves} opens: ${openCards}`);
     
-    if(moves.length===2){
-        //extract the cards 
-        if(newCards[moves[1]].src===newCards[moves[0]].src){
-            newCards[moves[1]].match=true
-            newCards[moves[0]].match=true
-          
-            setCurrentMove([])
-           
+    if(openCards.length<2){  
+        cards[index].active=true
+        setOpenCards(moves)
+    }
+    //console.log(`af->moves:${moves} opens: ${openCards}`);
+}
+const evaluate=(openCards,setOpenCards,cards)=>{
+    let moves=Object.assign([],openCards)
+    let [c1,c2] = moves
+        if(cards[c1].src===cards[c2].src){
+            cards[c1].match=true
+            cards[c2].match=true
+            setOpenCards([])
+            if(cards.every(ele=>ele.match===true)){
+                setTimeout(()=>alert("you win"),1000)
+            }
         }
         else{
-            
             setTimeout(()=>{
-                
-                newCards[moves[1]].active=false
-                newCards[moves[0]].active=false
-                   
-                setCurrentMove([])
-                setCards(newCards)
-             
-                 
+                cards[c1].active=false
+                cards[c2].active=false
+                setOpenCards([])
             },1000)
-            
         }
-        
-    }
-    if(newCards.every(ele=>ele.match===true)){
-        setTimeout(()=>alert("you win"),1000)
-    }
 
 }
-export{ clicOnCard}
+
+export{ handleCardClick, evaluate}
