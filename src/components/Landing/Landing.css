@@ -1,0 +1,52 @@
+div.row.landing {
+  background: var(--main-gradient);
+  background-size: 140vw;
+  background-position: -100px;
+  animation: change-bg 10s linear infinite;
+}
+div.row.landing div:first-child {
+  display: flex;
+}
+div.row.landing div {
+  height: 50vh;
+  font-size: 1.3em;
+  padding-left: 3em;
+}
+div.row.landing div h1 {
+  align-self: flex-end;
+  font-size: 3.2em;
+  color: var(--bs-white);
+  display: inline-block;
+}
+
+div.row.landing div.description {
+  background: var(--bs-light);
+  font-size: 1.4em;
+  height: 50vh;
+  border-radius: 40px 40px 0 0;
+
+  padding-top: 40px;
+}
+div.row.landing div.description span {
+  font-weight: 600;
+}
+div.row.landing div.description p {
+  font-weight: 200;
+}
+div.row.landing button.btn-primary {
+  border-radius: 25px;
+  border-color: var(--bs-white);
+  background: var(--second-gradient);
+  padding: 0.5em 0.8em;
+}
+@keyframes change-bg {
+  0% {
+    background-position: 0;
+  }
+  50% {
+    background-position: -140px;
+  }
+  100% {
+    background-position: 0;
+  }
+}

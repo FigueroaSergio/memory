@@ -1,15 +1,18 @@
 
+import 'bootstrap/dist/css/bootstrap.css'
 import './App.css';
 import { Game } from "./components/Game/Game"
-import 'bootstrap/dist/css/bootstrap.css'
+import {Landing } from "./components/Landing/Landing"
+
 function App() {
+  
+ 
   
   return (
     <>
-      <div  className='container'>
-        <Game/>
-      </div>
-      
+      <main>
+      <Landing logo="x" title="memoria" description="Aqui ira la descripcion"/>
+      </main>
     </>
   );
 }
