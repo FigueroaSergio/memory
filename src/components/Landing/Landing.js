@@ -4,7 +4,7 @@ function Landing({logo,title,description, action}){
         <>
             <div className="row landing">
                 <div className="col-12">
-                    <h1>{logo}<br/>{title}</h1>
+                    <h1><img src={logo}/><br/>{title}</h1>
                 </div>
                 <div className="col-12 description">
                     <span>Description</span>
