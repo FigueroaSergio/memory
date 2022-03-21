@@ -6,18 +6,18 @@ const Context = createContext();
 function ContextProvider({ children }) {
     const [cards,setCards]=useState([])
     const [openCards,setOpenCards]=useState([])
+    const [win,setWin] = useState(false)
     
     useEffect(()=>{
-        
         if(openCards.length===2)
-            evaluate(openCards,setOpenCards,cards)
+            evaluate(openCards,setOpenCards,cards,setWin)
         if(openCards.length>2){
             console.log(`Open:${openCards}`);
         }
-    },[openCards,cards])
+    },[openCards,cards,win])
     
     useEffect(()=>{
-        setCards(genereteCards(10))
+        setCards(genereteCards(2))
     },[])
     
     const handleClickCard=(index)=>handleCardClick(index,cards, openCards,setOpenCards)
@@ -26,7 +26,7 @@ function ContextProvider({ children }) {
         <Context.Provider 
         value={{cards,
                 setCards, 
-                handleClickCard}}>
+                handleClickCard,win,setWin}}>
             {children}
         </Context.Provider>)
 }

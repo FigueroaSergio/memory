@@ -11,3 +11,14 @@
     rgb(85, 214, 228) 100%
   );
 }
+button.btn-primary,
+a.btn-primary {
+  border-radius: 25px;
+  border-color: var(--bs-white);
+  background: var(--second-gradient);
+  padding: 0.5em 0.8em;
+  border-style: none;
+}
+button.btn-primary:hover {
+  border-style: none;
+}

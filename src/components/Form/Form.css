@@ -15,10 +15,6 @@
   font-size: 2.2em;
 }
 
-.form .btn-primary {
-  border-style: none;
-  background: var(--second-gradient);
-}
 @media (max-width: 576px) {
   .form div div.py-5 {
     border-radius: 0;

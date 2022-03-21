@@ -8,7 +8,7 @@ function Table(){
     let {cards}= useContext(Context)
     return (
         <>
-        <div  className='container'>
+        <div  className='container my-2'>
             <div className="row row-cols-4 g-3 ">
                 {cards.map((card, index)=>(
                     <Card  key={index} card={card} index={index}/>

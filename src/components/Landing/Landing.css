@@ -33,12 +33,7 @@ div.row.landing div.description span {
 div.row.landing div.description p {
   font-weight: 200;
 }
-div.row.landing button.btn-primary {
-  border-radius: 25px;
-  border-color: var(--bs-white);
-  background: var(--second-gradient);
-  padding: 0.5em 0.8em;
-}
+
 @keyframes change-bg {
   0% {
     background-position: 0;

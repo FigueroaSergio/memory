@@ -20,7 +20,7 @@ let handleCardClick=(index, cards,openCards, setOpenCards)=>{
     }
     //console.log(`af->moves:${moves} opens: ${openCards}`);
 }
-const evaluate=(openCards,setOpenCards,cards)=>{
+const evaluate=(openCards ,setOpenCards ,cards , setWin)=>{
     let moves=Object.assign([],openCards)
     let [c1,c2] = moves
         if(cards[c1].src===cards[c2].src){
@@ -28,7 +28,8 @@ const evaluate=(openCards,setOpenCards,cards)=>{
             cards[c2].match=true
             setOpenCards([])
             if(cards.every(ele=>ele.match===true)){
-                setTimeout(()=>alert("you win"),1000)
+                console.log("hey");
+                setWin(true)
             }
         }
         else{
