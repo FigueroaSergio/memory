@@ -17,7 +17,7 @@ function ContextProvider({ children }) {
     },[openCards,cards,win])
     
     useEffect(()=>{
-        setCards(genereteCards(2))
+        setCards(genereteCards(12))
     },[])
     
     const handleClickCard=(index)=>handleCardClick(index,cards, openCards,setOpenCards)
