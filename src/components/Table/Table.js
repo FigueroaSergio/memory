@@ -1,22 +1,24 @@
-import {useContext} from "react"
+import { useContext } from "react";
 
-import {Card} from "../Card/Card"
-import { Context } from "../../context/Context"
-import "./Table.css"
+import { Card } from "../Card/Card";
+import { Context } from "../../context/Context";
+import "./Table.css";
 
-function Table(){
-    let {cards}= useContext(Context)
-    return (
-        <>
-        <div  className='container my-2 game-table'>
-            <div className="row row-cols-4 g-3 ">
-                {cards.map((card, index)=>(
-                    <Card  key={index} card={card} index={index}/>
-                ))}
-
-            </div>
+function Table() {
+  let { cards } = useContext(Context);
+  //console.log(cards);
+  return (
+    <>
+      <div className="row  justify-content-center">
+        <div className="col-lg-8">
+          <div className="row row-cols-4 g-3 ">
+            {cards.map((card, index) => (
+              <Card key={index} card={card} index={index} />
+            ))}
+          </div>
         </div>
-        </>
-    )
+      </div>
+    </>
+  );
 }
-export { Table }
+export { Table };
