@@ -1,6 +1,18 @@
-
+import {useState } from "react"
 import "./Form.css"
 function Form(){
+  const [formData, setFormData]=useState({email:"",age:0,work:"",sex:"" ,sport:""})
+  const handleSubmit=(event)=>{
+    event.preventDefault()
+   
+  }
+  const handleChange=(e)=>{
+    const updateData= {...formData, [e.target.name]:e.target.value}
+    console.log(updateData);
+    setFormData(updateData)
+    
+  }
+  
     return(
         <>
             <div className="container">  
@@ -11,19 +23,26 @@ function Form(){
                                 Personal data
                             </h1>
                         </div>
-                        <form className="px-3">
-                            <div class="mb-3 mt-3">
-                              <label for="email" class="form-label">Email address</label>
-                              <input type="email" class="form-control" id="email"/>
+                        <form className="px-3" id="formUser" onSubmit={handleSubmit}>
+                            <div className="mb-3 mt-3">
+                              <label htmlFor="email" className="htmlForm-label">Email address</label>
+                              <input type="email" className="form-control"  id="email" name="email"
+                              value={formData.email}
+                              onChange={handleChange}
+                              />
                             </div>
-                            <div class="mb-3">
-                              <label for="age" class="form-label">Age</label>
-                              <input type="number" class="form-control" id="age"/>
+                            <div className="mb-3">
+                              <label htmlFor="age" className="form-label">Age</label>
+                              <input type="number" className="form-control" name="age" id="age"
+                              value={formData.age}
+                              onChange={handleChange} />
                             </div>
-                            <div class="mb-3">
-                                <label for="sport" class="form-label">Sport</label>
-                                <select class="form-select" aria-label="Default select example">
-                                  <option selected>None</option>
+                            <div className="mb-3">
+                                <label htmlFor="sport" className="form-label">Sport</label>
+                                <select className="form-select" name="sport" aria-label="Default select example" 
+                                onChange={handleChange} 
+                                >
+                                  <option defaultValue >None</option>
                                   <option value="1">gym</option>
                                   <option value="2">swim</option>
                                   <option value="3">karate</option>
@@ -36,32 +55,35 @@ function Form(){
 
                                 </select>
                             </div>
-                            <div class="mb-3">
-                              <label for="work" class="form-label">Work</label>
-                              <input type="text" class="form-control" id="work"/>
+                            <div className="mb-3">
+                              <label htmlFor="work" className="form-label">Work</label>
+                              <input type="text" className="form-control" id="work" name="work"
+                              value={formData.work}
+                              onChange={handleChange}/>
                             </div>
-                            <div class="mb-3">
-                              <label for="sport" class="form-label">Sex</label>
-                                <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="sex" id="sex-male"value="male"/>
-                                  <label class="form-check-label" for="sex-male">
+                            <div className="mb-3">
+                              <label htmlFor="sport" className="form-label">Sex</label>
+                                <div className="form-check">
+                                  <input className="form-check-input" type="radio" name="sex" id="sex-male" value="male"onChange={handleChange}/>
+                                  <label className="form-check-label" htmlFor="sex-male">
                                     Male
                                   </label>
                                 </div>
-                                <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="sex" id="sex-female" value="female"     />
-                                  <label class="form-check-label" for="sex-female">
+                                <div className="form-check">
+                                  <input className="form-check-input" type="radio" name="sex" id="sex-female" value="female"   onChange={handleChange}/>
+                                  <label className="form-check-label" htmlFor="sex-female">
                                     Female
                                   </label>
                                 </div>
-                                <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="sex" id="sex-other" value="other"/>
-                                  <label class="form-check-label" for="sex-other">
+                                <div className="form-check">
+                                   
+                                  <input className="form-check-input" type="radio" name="sex" id="sex-other" value="other" onChange={handleChange}/>
+                                  <label className="form-check-label" htmlFor="sex-other">
                                     Other
                                   </label>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" className="btn btn-primary">Submit</button>
                         </form>
 
                     </div>
