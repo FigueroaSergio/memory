@@ -26,7 +26,7 @@ function Form() {
     const myModal = new bootstrap.Modal(document.getElementById("userModal"));
     formData.age = parseInt(formData.age);
 
-    let res = await fetch("http://localhost:4000/users", {
+    let res = await fetch("https://bmemory.herokuapp.com/users", {
       method: "post",
       headers: {
         "Content-Type": "application/json",

@@ -17,7 +17,7 @@ function Game({ children }) {
   };
   const handelSubmit = async (event) => {
     event.preventDefault();
-    let res = await fetch("http://localhost:4000/game", {
+    let res = await fetch("https://bmemory.herokuapp.com/users", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
