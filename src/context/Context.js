@@ -80,7 +80,7 @@ function ContextProvider({ children }) {
   };
   return (
     <Context.Provider
-      value={{ cards, restarGame, handleClickCard, win, setWin }}
+      value={{ cards, restarGame, handleClickCard, win, setWin, moves}}
     >
       {children}
     </Context.Provider>

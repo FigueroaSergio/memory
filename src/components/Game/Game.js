@@ -1,4 +1,4 @@
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 import * as bootstrap from "bootstrap";
 
 import { Table } from "../Table/Table";
@@ -6,17 +6,42 @@ import { Modal } from "../Modal/Modal";
 import { Context } from "../../context/Context";
 
 function Game({ children }) {
-  let { win, restarGame } = useContext(Context);
+  let { win, restarGame, moves } = useContext(Context);
+  let [email, setEmail] = useState("");
+  const [modal, setModal] = useState(null);
+  const [message, setMessage] = useState(null);
 
+  const handleChange = (event) => {
+    setEmail(event.target.value);
+    console.log(email);
+  };
+  const handelSubmit = async (event) => {
+    event.preventDefault();
+    let res = await fetch("http://localhost:4000/game", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email: email, moves: moves }),
+    });
+     res = await res.json()
+    if(res.error){
+      setMessage(res.message[0])
+    }
+    else{
+      setMessage("Thanks")
+    }
+  };
   useEffect(() => {
     //console.log(win);
     if (win) {
       var myModal = new bootstrap.Modal(
         document.getElementById("exampleModal")
       );
+      setModal(myModal);
       myModal.show();
     }
-  }, [win]);
+  }, [win, setModal]);
 
   return (
     <>
@@ -49,13 +74,8 @@ function Game({ children }) {
         </div>
       ) : null}
 
-      <Modal
-        action="hey"
-        title="Congratulations"
-        description="Send"
-        id="exampleModal"
-      >
-        <form>
+      <Modal title="Congratulations" description="Send" id="exampleModal">
+        <form onSubmit={handelSubmit}>
           <div className="mb-3 text-center">
             <p>You win, send us the data for statistics</p>
             <label htmlFor="email" className="form-label">
@@ -65,13 +85,19 @@ function Game({ children }) {
               type="email"
               className="form-control"
               id="email"
-              aria-describedby="emailHelp"
+              name="email"
               placeholder="@"
+              onChange={handleChange}
+              value={email}
+              required
             />
             <div id="emailHelp" className="form-text">
-              We'll never share your email with anyone else.
+              {message ? message : null}
             </div>
           </div>
+          <button className="btn btn-primary" >
+            Send{" "}
+          </button>
         </form>
       </Modal>
     </>

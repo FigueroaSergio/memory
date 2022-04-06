@@ -15,7 +15,7 @@ function Modal({children,title , action, description,id }){
                 </div>
               </div>
               {action?<div className="modal-footer">
-                <button type="button" className="btn btn-primary">{description?description:"Save"}</button>
+                <button type="button" onClick={action} className="btn btn-primary">{description?description:"Save"}</button>
               </div>:null}
             </div>
           </div>
