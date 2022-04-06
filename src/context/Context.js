@@ -98,9 +98,12 @@ function ContextProvider({ children }) {
     saveMoves(newMoves);
   };
   const restarGame = () => {
+    setCount(0)
     saveCards(genereteCards(12));
+    setWin(false)
     saveMoves([]);
     setOpenCards([]);
+    
   };
   return (
     <Context.Provider

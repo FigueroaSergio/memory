@@ -30,6 +30,8 @@ function Game({ children }) {
     }
     else{
       setMessage("Thanks")
+      restarGame()
+      modal.hide()
     }
   };
   useEffect(() => {
