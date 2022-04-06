@@ -27,7 +27,7 @@ function ContextProvider({ children }) {
     // block select cards already opened
     if (
       !cards[index].match &&
-      !newOpenCards.includes(index) &&
+      newOpenCards.filter(ele=>ele.index===index).length==0 &&
       openCards.length < 2
     ) {
       cards[index].active = true;
