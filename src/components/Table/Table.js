@@ -1,12 +1,11 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 import { Card } from "../Card/Card";
 import { Context } from "../../context/Context";
 import "./Table.css";
 
 function Table() {
-  let { cards } = useContext(Context);
-  //console.log(cards);
+  let { cards, moves } = useContext(Context);
   return (
     <>
       <div className="row  justify-content-center">

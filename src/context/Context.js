@@ -9,12 +9,36 @@ function ContextProvider({ children }) {
     genereteCards(12)
   );
   //const [cards, saveCards] = useState(genereteCards(12));
-  const { item: moves, saveItem: saveMoves } = useLocalStorage("moves", []);
+  let { item: moves, saveItem: saveMoves } = useLocalStorage("moves", []);
+ 
   const [openCards, setOpenCards] = useState([]);
   const [win, setWin] = useState(false);
+  const [count,setCount]= useState(0)
+
+   
+  const viewCards=(val)=>{
+    saveCards(cards.map(card=>{return{...card,"active":val}}))
+  }
+  useEffect(()=>{
+    
+    if((count===1 ||count===2)&& moves.length<=0){
+      saveCards(genereteCards(12))
+      viewCards(true)
+      setTimeout(()=>viewCards(false),4000)
+    }
+  },[count])
+  
+  
+
   useEffect(() => {
-    setWin(cards.every((ele) => ele.match === true));
-  }, [cards]);
+    //console.log("Entre");
+    if(moves.length>=12){
+      //console.log("Verify if win");
+      setWin(cards.every((ele) => ele.match === true));
+    }
+    setCount(count+1)
+    
+  }, [moves]);
   useEffect(() => {
     if (openCards.length === 2) evaluate();
   }, [openCards]);
