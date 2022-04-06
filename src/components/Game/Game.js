@@ -46,6 +46,13 @@ function Game({ children }) {
   return (
     <>
       <Table />
+      <button
+                  type="button"
+                  className="btn btn-primary mx-2"
+                  onClick={() => restarGame()}
+                >
+                  Restart
+                </button>
       {win ? (
         <div className="row  justify-content-center">
           <div className="col-lg-8">
