@@ -20,7 +20,7 @@ function App() {
     <>
       <main>
       <Routes>
-        <Route path="/memory" element={<Landing logo={logo} title="memoria" description="Aqui ira la descripcion"/>}/>
+        <Route path="/memory" element={<Landing logo={logo} title="memory" description="In this game you should try to open all the cards in the less time possible"/>}/>
         <Route path="/memory/game" element={<Game />} />
           <Route path='/memory/form' element={<Form/>}/>
       </Routes>

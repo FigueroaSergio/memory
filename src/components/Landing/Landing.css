@@ -34,6 +34,10 @@ div.row.landing div.description p {
   font-weight: 200;
 }
 
+div.row.landing div.description p a{
+  font-size: 0.6em;
+}
+
 @keyframes change-bg {
   0% {
     background-position: 0;

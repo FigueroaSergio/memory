@@ -14,8 +14,9 @@ function Landing({logo,title,description, action}){
                     <p>
                         {description}
                     </p>
-                    <Link className="btn btn-primary" to="/memory/game">Invoices</Link>
-                   
+                    <Link className="btn btn-primary" to="/memory/game">Play</Link>
+                    <p><Link  to="/memory/form">Register</Link></p>
+                    
                 </div>
             </div>
         </>
