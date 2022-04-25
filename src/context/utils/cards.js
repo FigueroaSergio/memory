@@ -43,7 +43,7 @@ const genereteCards = (n) => {
     return {
       id: i,
       src: card,
-      coord: [auxColums, auxRows],
+      coord: [auxColums, auxRows,card],
       active: false,
       match: false,
     };

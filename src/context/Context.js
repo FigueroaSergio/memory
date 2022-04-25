@@ -10,7 +10,6 @@ function ContextProvider({ children }) {
   );
   //const [cards, saveCards] = useState(genereteCards(12));
   let { item: moves, saveItem: saveMoves } = useLocalStorage("moves", []);
- 
   const [openCards, setOpenCards] = useState([]);
   const [win, setWin] = useState(false);
   const [count,setCount]= useState(0)
@@ -24,7 +23,7 @@ function ContextProvider({ children }) {
     if((count===1 ||count===2)&& moves.length<=0){
       saveCards(genereteCards(12))
       viewCards(true)
-      setTimeout(()=>viewCards(false),4000)
+      setTimeout(()=>viewCards(false),6000)
     }
   },[count])
   

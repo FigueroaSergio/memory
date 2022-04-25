@@ -26,7 +26,7 @@ function Form() {
     const myModal = new bootstrap.Modal(document.getElementById("userModal"));
     formData.age = parseInt(formData.age);
 
-    let res = await fetch("https://bmemory.herokuapp.com/users", {
+    let res = await fetch(`${process.env.REACT_APP_MONGO_URL}users`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -103,15 +103,16 @@ function Form() {
                   aria-label="Default select example"
                   onChange={handleChange}
                 >
-                  <option defaultValue>None</option>
-                  <option value="1">gym</option>
-                  <option value="2">swim</option>
-                  <option value="3">karate</option>
-                  <option value="4">soccer</option>
-                  <option value="5">tennis</option>
-                  <option value="6">bike</option>
-                  <option value="7">run</option>
-                  <option value="3">volleyball</option>
+                  <option defaultValue value="none">None</option>
+                  <option value="gym">gym</option>
+                  <option value="swim">swim</option>
+                  <option value="karate">karate</option>
+                  <option value="soccer">soccer</option>
+                  <option value="tennis">tennis</option>
+                  <option value="bike">bike</option>
+                  <option value="run">run</option>
+                  <option value="volleyball">volleyball</option>
+                  <option value="other">other</option>
                 </select>
               </div>
               <div className="mb-3">

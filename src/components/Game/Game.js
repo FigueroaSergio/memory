@@ -17,7 +17,7 @@ function Game({ children }) {
   };
   const handelSubmit = async (event) => {
     event.preventDefault();
-    let res = await fetch("https://bmemory.herokuapp.com/game", {
+    let res = await fetch(`${process.env.REACT_APP_MONGO_URL}game`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -48,11 +48,12 @@ function Game({ children }) {
   return (
     <>
       <Table />
-      {win ? (
+      
         <div className="row  justify-content-center">
           <div className="col-lg-8">
             <div className="row my-3  row-cols-4 justify-content-end">
               <div className="col text-center">
+              
                 <button
                   type="button"
                   className="btn btn-primary mx-2"
@@ -61,6 +62,7 @@ function Game({ children }) {
                   Restart
                 </button>
               </div>
+              {win ? (
               <div className="col text-center">
                 <button
                   type="button"
@@ -70,11 +72,11 @@ function Game({ children }) {
                 >
                   Finish
                 </button>
-              </div>
+              </div>) : null}
             </div>
           </div>
         </div>
-      ) : null}
+      
 
       <Modal title="Congratulations" description="Send" id="exampleModal">
         <form onSubmit={handelSubmit}>
@@ -97,7 +99,7 @@ function Game({ children }) {
               {message ? message : null}
             </div>
           </div>
-          <button className="btn btn-primary" >
+          <button type="submit" className="btn btn-primary" >
             Send{" "}
           </button>
         </form>

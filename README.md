@@ -5,6 +5,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Available Scripts
 
 In the project directory, you can run:
+#### create file .env
+```bash
+REACT_APP_MONGO_URL=http://localhost:4000/
+
+```
 
 ### `npm start`
 
