@@ -9,6 +9,8 @@
   text-align: center;
   font-size: var(--card-size);
   place-content: center;
+  color: grey;
+  border: 2px solid grey;
 }
 .game-card p {
   margin: 0;

@@ -7,6 +7,7 @@ import { Modal } from "../Modal/Modal";
 
 function Form() {
   let navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
   const [formData, setFormData] = useState({
     email: "",
     age: 0,
@@ -25,26 +26,30 @@ function Form() {
     event.preventDefault();
     const myModal = new bootstrap.Modal(document.getElementById("userModal"));
     formData.age = parseInt(formData.age);
-
-    let res = await fetch(`${process.env.REACT_APP_MONGO_URL}users`, {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
-    res = await res.json();
-    if (res.error) {
-      setMessage({ message: res.message, title: "Error" });
+    if (loading) {
       myModal.show();
-    } else {
-      setMessage({
-        message: ["User create"],
-        title: "Success",
-        action: () => closeModal(myModal),
-        description: "Play",
+      setLoading(false);
+      let res = await fetch(`${process.env.REACT_APP_MONGO_URL}users`, {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       });
-      myModal.show();
+      res = await res.json();
+      setLoading(true);
+      if (res.error) {
+        setMessage({ message: res.message, title: "Error" });
+        myModal.show();
+      } else {
+        setMessage({
+          message: ["User create"],
+          title: "Success",
+          action: () => closeModal(myModal),
+          description: "Play",
+        });
+        myModal.show();
+      }
     }
   };
   const closeModal = (modal) => {
@@ -103,7 +108,9 @@ function Form() {
                   aria-label="Default select example"
                   onChange={handleChange}
                 >
-                  <option defaultValue value="none">None</option>
+                  <option defaultValue value="none">
+                    None
+                  </option>
                   <option value="gym">gym</option>
                   <option value="swim">swim</option>
                   <option value="karate">karate</option>
@@ -172,7 +179,7 @@ function Form() {
                   </label>
                 </div>
               </div>
-              <button type="submit" className="btn btn-primary">
+              <button type="submit" className="btn btn-primary" disabled={!loading}>
                 Submit
               </button>
             </form>
@@ -185,11 +192,14 @@ function Form() {
         description={message.description}
         id="userModal"
       >
-        {message.message.map((message, i) => (
-          <p key={i}>{message}</p>
-        ))}
+        {loading ? (
+          message.message.map((message, i) => <p key={i}>{message}</p>)
+        ) : (
+          <div className="spinner-border text-info" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        )}
       </Modal>
-      
     </>
   );
 }

@@ -10,7 +10,7 @@ div.row.landing div:first-child {
 div.row.landing div {
   height: 50vh;
   font-size: 1.3em;
-  padding-left: 3em;
+
 }
 div.row.landing div h1 {
   align-self: flex-end;
@@ -24,7 +24,6 @@ div.row.landing div.description {
   font-size: 1.4em;
   height: 50vh;
   border-radius: 40px 40px 0 0;
-
   padding-top: 40px;
 }
 div.row.landing div.description span {
@@ -36,6 +35,7 @@ div.row.landing div.description p {
 
 div.row.landing div.description p a{
   font-size: 0.6em;
+  text-decoration: none;
 }
 
 @keyframes change-bg {

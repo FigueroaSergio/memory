@@ -23,7 +23,7 @@ function ContextProvider({ children }) {
     if((count===1 ||count===2)&& moves.length<=0){
       saveCards(genereteCards(12))
       viewCards(true)
-      setTimeout(()=>viewCards(false),6000)
+      setTimeout(()=>viewCards(false),4700)
     }
   },[count])
   
